@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body class="text-center">
+
+  <main class="form-signin">
+    {{ context }}
+    <form method="POST">
+      {% csrf_token %}
+      <h1 class="h3 mb-3 fw-normal">ログインする</h1>
+      <label for="UserName" class="visually-hidden">ユーザーネーム</label>
+      <input type="text" id="UserName" class="form-control" placeholder="ユーザーネーム" name="username" required autofocus>
+      <label for="Password" class="visually-hidden">パスワード</label>
+      <input type="password" id="Password" class="form-control" placeholder="パスワード" name="password" required>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+    </form>
+  </main>
+</body>
+{% endblock content %}

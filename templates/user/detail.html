@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="alert alert-primary" role="alert">
+  <h3>詳細ページ</h3>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  
+  <div class="alert alert-success" role="alert">
+    <p>タイトル : {{ board_object.title }}</p>
+    <p>投稿者 : {{ board_object.author }}</p>
+    <p>内容 : {{ board_object.content }}</p>
+    <p><img src="{{ board_object.image.url }}" width=300></p>
+    <a href="{% url 'good' board_object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいね</a>
+    <a href="{% url 'read' board_object.pk %}" class="btn btn-secondary" role="button" aria-disabled="true">既読</a>
+  </div>
+  
+  <a href="{% url 'list' %}">一覧に戻る</a>
+  <a href="{% url 'logout' %}">ログアウト</a>
+</div>
+{% endblock content %}

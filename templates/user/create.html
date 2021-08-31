@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="conteiner">
+  <form method="POST" enctype="multipart/form-data" class="mx-5 mt-5">
+    {% csrf_token %}
+    <p>title : {{ form.title }}</p>
+    <p>content : {{ form.content }}</p>
+    <p>image : {{ form.image }}</p>
+    <input type="hidden" name="author" value="{{ user.username }}">
+    <input type="submit" value="新規作成">
+  </form>
+  <a href="{% url 'list' %}">一覧に戻る</a>
+  <a href="{% url 'logout' %}">ログアウト</a>
+</div>
+{% else %}
+<p>please login !</p>
+<a href="{% url 'login' %}">ログイン画面へ</a>
+{% endif %}
+{% endblock content %}

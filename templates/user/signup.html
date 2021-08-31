@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+<link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock customcss %}
+
+{% block content %}
+<body class="text-center">
+
+  <main class="form-signin">
+    {{ error_message }}
+    <form method="POST">
+      {% csrf_token %}
+      <h1 class="h3 mb-3 fw-normal">サインアップする</h1>
+      <label for="UserName" class="visually-hidden">ユーザーネーム</label>
+      <input type="text" id="UserName" class="form-control" placeholder="ユーザーネーム" name="username" required autofocus>
+      <label for="Email" class="visually-hidden">メールアドレス</label>
+      <input type="email" id="Email" class="form-control" placeholder="メールアドレス" name="email" required autofocus>
+      <label for="Password" class="visually-hidden">パスワード</label>
+      <input type="password" id="Password" class="form-control" placeholder="パスワード" name="password" required>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">サインアップ</button>
+    </form>
+  </main>
+</body>
+{% endblock content %}
